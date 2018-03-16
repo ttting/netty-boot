@@ -30,17 +30,17 @@ public class ServerBuilder {
         return this;
     }
 
-    public <T> ServerBuilder setBossChannelOption(ChannelOption<?> option, T value) {
+    public <T> ServerBuilder setBossChannelOption(ChannelOption<Object> option, T value) {
         this.serverConfig.getBossOptions().put(option, value);
         return this;
     }
 
-    public ServerBuilder setChildChannelOptions(Map<ChannelOption<?>, Object> channelOptions) {
+    public ServerBuilder setChildChannelOptions(Map<ChannelOption<Object>, Object> channelOptions) {
         this.serverConfig.getChildOptions().putAll(channelOptions);
         return this;
     }
 
-    public <T> ServerBuilder setChildChannelOption(ChannelOption<?> option, T value) {
+    public <T> ServerBuilder setChildChannelOption(ChannelOption<Object> option, T value) {
         this.serverConfig.getChildOptions().put(option, value);
         return this;
     }
