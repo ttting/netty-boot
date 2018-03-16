@@ -3,6 +3,6 @@ package me.ttting.netty.server;
 /**
  * Created by titengjiang
  */
-interface Server {
-
+public interface Server {
+    void start() throws InterruptedException;
 }

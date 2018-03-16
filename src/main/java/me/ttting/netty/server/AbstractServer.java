@@ -16,6 +16,7 @@ public abstract class AbstractServer implements Server {
 
     public AbstractServer(ServerConfig serverConfig, IChInitializer iChInitializer) {
         this.serverConfig = serverConfig;
+        this.iChInitializer = iChInitializer;
         this.serverBootstrap = BootStrapFactory.newServerBootStrap(serverConfig.getBossThreads(), serverConfig.getWorkerThreads(), serverConfig.getChannelType());
         initChildHandler();
         initOptions();
@@ -37,5 +38,21 @@ public abstract class AbstractServer implements Server {
 
     private void initChildOptions() {
         serverConfig.getChildOptions().entrySet().stream().forEach(entry -> serverBootstrap.childOption(entry.getKey(), entry.getValue()));
+    }
+
+    @Override
+    public void start() throws InterruptedException {
+        try {
+            if (serverConfig.getHost() != null) {
+                serverBootstrap.bind(serverConfig.getHost(), serverConfig.getPort()).sync();
+            } else {
+                serverBootstrap.bind(serverConfig.getPort()).sync();
+            }
+        } catch (InterruptedException e) {
+            serverBootstrap.childGroup().shutdownGracefully();
+            serverBootstrap.group().shutdownGracefully();
+            throw e;
+        }
+
     }
 }

@@ -23,9 +23,15 @@ public class ServerConfig {
 
     private IChInitializer iChInitializer;
 
+    private int port;
+
+    private String host;
+
     public ServerConfig() {
         bossOptions = new ConcurrentHashMap();
         childOptions = new ConcurrentHashMap();
+        serverType = ServerType.HTTP;
+        channelType = ChannelType.EPOLL;
     }
 
     public ChannelType getChannelType() {
@@ -82,5 +88,25 @@ public class ServerConfig {
 
     public void setiChInitializer(IChInitializer iChInitializer) {
         this.iChInitializer = iChInitializer;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public void validate() {
+
     }
 }

@@ -1,6 +1,8 @@
 package me.ttting.netty.server;
 
 import io.netty.channel.ChannelOption;
+import me.ttting.netty.server.http.HttpServer;
+import me.ttting.netty.server.tcp.TcpServer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,7 +47,31 @@ public class ServerBuilder {
         return this;
     }
 
+    public ServerBuilder setiChInitializer(IChInitializer iChInitializer) {
+        this.serverConfig.setiChInitializer(iChInitializer);
+        return this;
+    }
+
+    public ServerBuilder setPort(int port) {
+        this.serverConfig.setPort(port);
+        return this;
+    }
+
+    public ServerBuilder setHost(String host) {
+        this.serverConfig.setHost(host);
+        return this;
+    }
+
     public Server build() {
-        return null;
+        switch (serverConfig.getServerType()) {
+            case TCP: {
+                return new TcpServer(serverConfig, serverConfig.getiChInitializer());
+            }
+            case HTTP: {
+                return new HttpServer(serverConfig);
+            }
+            default:
+                throw new RuntimeException("UnSupport ServerType");
+        }
     }
 }

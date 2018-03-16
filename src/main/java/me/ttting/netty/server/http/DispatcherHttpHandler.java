@@ -12,7 +12,7 @@ import io.netty.handler.codec.http.QueryStringDecoder;
 public class DispatcherHttpHandler extends HttpRequestHandler {
     private PatternRegister patternRegister = new DefaultPatternRegister();
 
-    private HttpRequestExecutor defaultExecutor;
+    private HttpRequestExecutor defaultExecutor = new DefaultHttpRequestExecutor();
 
     public DispatcherHttpHandler() {}
 
