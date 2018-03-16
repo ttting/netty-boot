@@ -4,9 +4,12 @@
   <groupId>me.ttting.netty</groupId>
   <artifactId>netty-boot</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1.0</version>
   <name>netty-boot</name>
   <url>http://maven.apache.org</url>
+  <modules>
+    <module>netty-boot-example</module>
+  </modules>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
