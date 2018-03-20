@@ -1,7 +1,7 @@
 # netty-boot Project
 Netty-boot is an utility for user to start a HTTP/MQTT server base on Netty quickly. 
 
-##Download
+## Download
 Netty-boot is published to jitpack.
 For Maven:  
 Step 1: Add the JitPack repository to your pom.xml
@@ -43,7 +43,7 @@ Step 2: Add the dependency
 	        compile 'com.github.ttting.netty-boot:netty-boot:ce67bf00b4'
 	}
 ```
-##How to use
+## How to use
 Use ServerBuidler to build a Http Server and Start a default http server.
 
 ```
