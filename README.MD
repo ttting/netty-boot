@@ -17,12 +17,12 @@ Step 1: Add the JitPack repository to your pom.xml
 
 Step 2. Add the dependency
 
-```
+```xml
 <dependency>
 	<groupId>com.github.ttting.netty-boot</groupId>
 	<artifactId>netty-boot</artifactId>
 	<version>ce67bf00b4</version>
-	</dependency>
+</dependency>
 ```
 
 For Gradle:
