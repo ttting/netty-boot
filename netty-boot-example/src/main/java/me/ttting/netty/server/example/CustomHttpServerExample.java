@@ -16,12 +16,12 @@ import java.util.Map;
 public class CustomHttpServerExample {
     public static void main(String[] args) throws InterruptedException {
         DispatcherHttpHandler dispatcherHttpHandler = new DispatcherHttpHandler();
-        dispatcherHttpHandler.register("/ping", HttpMethod.GET, new PingHttpRequestExcutor());
+        dispatcherHttpHandler.register("/ping", HttpMethod.GET, new PingHttpRequestExecutor());
 
         new ServerBuilder().setPort(8080).setiChInitializer((ch -> ch.pipeline().addLast(dispatcherHttpHandler))).build().start();
     }
 
-    static class PingHttpRequestExcutor extends OneResponseExecutor{
+    static class PingHttpRequestExecutor extends OneResponseExecutor{
         @Override
         protected FullHttpResponse handle(HttpRequest httpRequest, Map<String, List<String>> params, ByteBuf byteBuf) throws Exception {
             FullHttpResponse response;
