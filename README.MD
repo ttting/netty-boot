@@ -1,4 +1,4 @@
-# netty-boot Project
+# Netty-Boot Project
 Netty-boot is an utility for user to start a HTTP/MQTT server base on Netty quickly. 
 
 ## Download
@@ -7,46 +7,46 @@ For Maven:
 Step 1: Add the JitPack repository to your pom.xml
 
 ```xml
-  <repositories>
-    <repository>
-      <id>jitpack.io</id>
-      <url>https://jitpack.io</url>
-    </repository>
-  </repositories>
+<repositories>
+	<repository>
+		<id>jitpack.io</id>
+		<url>https://jitpack.io</url>
+  </repository>
+</repositories>
 ```
 
 Step 2. Add the dependency
 
 ```
-    <dependency>
-      <groupId>com.github.ttting.netty-boot</groupId>
-      <artifactId>netty-boot</artifactId>
-      <version>ce67bf00b4</version>
-    </dependency>
+<dependency>
+	<groupId>com.github.ttting.netty-boot</groupId>
+	<artifactId>netty-boot</artifactId>
+	<version>ce67bf00b4</version>
+	</dependency>
 ```
 
 For Gradle:
 Step 1: Add the JitPack repository to your  build.gradle 
 
 ```groovy
-	allprojects {
-		repositories {
+allprojects {
+	repositories {
 			...
-			maven { url 'https://jitpack.io' }
-		}
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
 Step 2: Add the dependency
 
 ```groovy
-		dependencies {
-	        compile 'com.github.ttting.netty-boot:netty-boot:ce67bf00b4'
-	}
+dependencies {
+	compile 'com.github.ttting.netty-boot:netty-boot:ce67bf00b4'
+}
 ```
 ## How to use
 Use ServerBuidler to build a Http Server and Start a default http server.
 
-```
+```java
 public class DefaultHttpServerExample {
     public static void main(String[] args) throws InterruptedException {
         new ServerBuilder().setPort(8080).setiChInitializer((ch -> { ch.pipeline().addLast(new DispatcherHttpHandler());} )).build().start();
@@ -56,7 +56,7 @@ public class DefaultHttpServerExample {
 
 Build a DispatcherHttpHandler and Register handler. Add the DispatcherHttpHandler to the childhandler pipeline. 
 
-```
+```java
 public class CustomHttpServerExample {
     public static void main(String[] args) throws InterruptedException {
         DispatcherHttpHandler dispatcherHttpHandler = new DispatcherHttpHandler();
